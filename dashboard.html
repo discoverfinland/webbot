@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #6cc, #cc6);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            width: 250px;
+            height: 350px;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .header {
+            text-align: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.5);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .counter {
+            font-size: 2em;
+            color: #4CAF50;
+            text-align: center;
+        }
+
+        .smooth-transition {
+            transition: background 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card smooth-transition">
+            <div class="header">Total Expenses</div>
+            <div class="content">
+                <div class="counter" id="total-expenses">0</div>
+                <p>Track your expenditures easily</p>
+            </div>
+        </div>
+        <div class="card smooth-transition">
+            <div class="header">Monthly Spend</div>
+            <div class="content">
+                <div class="counter" id="monthly-spend">0</div>
+                <p>Keep an eye on your monthly spending</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        const counters = document.querySelectorAll('.counter');
+        counters.forEach(counter => {
+            let count = 0;
+            const updateCount = () => {
+                counter.innerText = count++;
+                if (count <= 100) {
+                    setTimeout(updateCount, 50);
+                }
+            };
+            updateCount();
+        });
+    </script>
+</body>
+</html>
